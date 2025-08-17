@@ -1,0 +1,1017 @@
+{
+  "name": "Bot-Whatsapp",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        400,
+        512
+      ],
+      "id": "1114755c-7743-4c7f-91de-35b95ed81137",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "upsxATZGeRjc7U9u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "https://docs.google.com/document/d/1EIqVSGm1qRjsBwyR2wZNrw17Q86bsxa_fJXSjATkU8M/edit?usp=sharing"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        1408,
+        848
+      ],
+      "id": "f6623c3e-8534-4869-b683-e16a25e6f5fc",
+      "name": "Google Docs",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "lBsQ15VkEJo9NtRw",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "kemersoncardozo@gmail.com",
+          "mode": "list",
+          "cachedResultName": "kemersoncardozo@gmail.com"
+        },
+        "start": "={{ $fromAI('Start', ``, 'string') }}",
+        "end": "={{ $fromAI('End', ``, 'string') }}",
+        "useDefaultReminders": "={{ $fromAI('Use_Default_Reminders', ``, 'boolean') }}",
+        "additionalFields": {
+          "summary": "={{ $fromAI('Summary', '', 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1136,
+        1216
+      ],
+      "id": "1d52993d-ad25-4706-8bf0-5188904d4c75",
+      "name": "Criar agenda",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "Sy3R9g0uhgtcbAsE",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "kemersoncardozo@gmail.com",
+          "mode": "list",
+          "cachedResultName": "kemersoncardozo@gmail.com"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "updateFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1264,
+        1216
+      ],
+      "id": "d6aaaf84-1dd5-464e-8287-f2d47bbbdc98",
+      "name": "Atualizar Evento",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "Sy3R9g0uhgtcbAsE",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "kemersoncardozo@gmail.com",
+          "mode": "list",
+          "cachedResultName": "kemersoncardozo@gmail.com"
+        },
+        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
+        "timeMin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('After', ``, 'string') }}",
+        "timeMax": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Before', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1392,
+        1216
+      ],
+      "id": "4fc48de8-aba0-46fb-8205-5e63d9506824",
+      "name": "Consultar agenda",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "Sy3R9g0uhgtcbAsE",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "kemersoncardozo@gmail.com",
+          "mode": "list",
+          "cachedResultName": "kemersoncardozo@gmail.com"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1520,
+        1216
+      ],
+      "id": "a2b8911a-12d1-4cb9-bfe2-537c983f3f55",
+      "name": "Cancelar agenda",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "Sy3R9g0uhgtcbAsE",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Ouve Mensagem').item.json.body.data.key.remoteJid }}",
+        "contextWindowLength": 25
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        528,
+        544
+      ],
+      "id": "1eeacff8-c9dc-4e86-a804-2a198efd4341",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "joeG3TczaitSGcBJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1,
+      "position": [
+        656,
+        544
+      ],
+      "id": "e7b844e9-af7c-4db2-805b-868b510028e7",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "tableId": "Tabela-de-Testes",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "id",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "contato",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues2_Field_Value', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        624,
+        1152
+      ],
+      "id": "24530c88-06bc-4686-9557-a69b2e066732",
+      "name": "Cadastro",
+      "credentials": {
+        "supabaseApi": {
+          "id": "PtzUX3qjMpzQRArM",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Tabela-de-Testes",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "nome",
+              "keyValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('conditions0_Value', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        768,
+        1152
+      ],
+      "id": "f677eda8-3eaf-49c1-9a0f-73920858fc47",
+      "name": "Consultar",
+      "credentials": {
+        "supabaseApi": {
+          "id": "PtzUX3qjMpzQRArM",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "Tabela-de-Testes"
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        896,
+        1088
+      ],
+      "id": "3f74a98b-e45f-4548-a33f-d11e45813a71",
+      "name": "Deletar",
+      "credentials": {
+        "supabaseApi": {
+          "id": "PtzUX3qjMpzQRArM",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "botwhatsapp",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        320
+      ],
+      "id": "41c24802-732b-47f4-9cca-ff616c0183d5",
+      "name": "Ouve Mensagem",
+      "webhookId": "a01bf1de-d15c-42f5-87e4-4eab01d40624"
+    },
+    {
+      "parameters": {
+        "resource": "chat-api",
+        "operation": "read-messages",
+        "instanceName": "={{ $('Sou eu ?').item.json.body.instance }}",
+        "remoteJid": "={{ $('Sou eu ?').item.json.body.data.key.remoteJid.split('@')[0] }}",
+        "messageId": "={{ $json.output }}"
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        976,
+        144
+      ],
+      "id": "f201f727-0989-4751-83e6-496cd69df686",
+      "name": "Ler Mensagem",
+      "credentials": {
+        "evolutionApi": {
+          "id": "uI7kR9HmjFS4Jcag",
+          "name": "Evolution account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "={{ $('Sou eu ?').item.json.body.instance }}",
+        "remoteJid": "={{ $('Sou eu ?').item.json.body.data.key.remoteJid.split('@')[0] }}",
+        "messageText": "={{ $('Orquestrador').item.json.output }}",
+        "options_message": {
+          "delay": 3000
+        }
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        1136,
+        112
+      ],
+      "id": "ddc21a24-c25a-47f6-896b-24c8f59de799",
+      "name": "Enviar Mensagem",
+      "credentials": {
+        "evolutionApi": {
+          "id": "uI7kR9HmjFS4Jcag",
+          "name": "Evolution account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "inputType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        192,
+        160
+      ],
+      "id": "53bf78b0-f3cf-4bf6-bf4d-bde09e14a4b1",
+      "name": "Transcrição de áudio",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "upsxATZGeRjc7U9u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "text": "analise se a imagem é sobre o cenário musical e fale sobre isso.",
+        "inputType": "binary",
+        "simplify": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        176,
+        464
+      ],
+      "id": "82e0a82d-87b4-4a9b-a600-196c02873858",
+      "name": "Interpretar Imagem",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "upsxATZGeRjc7U9u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "body.data.message.base64",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -48,
+        464
+      ],
+      "id": "65f82e86-3d70-4ed1-9ced-e3fb53629c07",
+      "name": "Converter Imagem"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "body.data.message.base64",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -32,
+        176
+      ],
+      "id": "f6fde7d8-80fa-46b3-a4d9-9caed8b66692",
+      "name": "Converte áudio"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "53058beb-3ae6-4603-92f4-ddd3c5654a6b",
+                    "leftValue": "={{ $json.body.data.message.conversation }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.data.message.audioMessage.url }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    },
+                    "id": "a4f9265c-accf-4b5a-b89b-2874af039820"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9171a944-f350-4808-af0d-aad69d4f5ca0",
+                    "leftValue": "={{ $json.body.data.message.imageMessage.url }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -272,
+        304
+      ],
+      "id": "092256f4-1dc0-4d0c-a8ad-5befc2ebc9b6",
+      "name": "Tipo de mensagem"
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        496,
+        1136
+      ],
+      "id": "b8ee2e15-274e-4f66-8608-592f57e8a8b9",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Ouve Mensagem').item.json.body.data.key.remoteJid }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1024,
+        1264
+      ],
+      "id": "524642d1-6b86-45a5-ae42-be0899921ba3",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        864,
+        768
+      ],
+      "id": "8f5851e7-96d0-45fb-a1ae-6190f2b49173",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "upsxATZGeRjc7U9u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Ouve Mensagem').item.json.body.data.key.id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        1296,
+        832
+      ],
+      "id": "522988e4-32dd-4d80-b8ba-b04f0234be6a",
+      "name": "Postgres Chat Memory1",
+      "credentials": {
+        "postgres": {
+          "id": "joeG3TczaitSGcBJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.body.data.message.conversation }}\n\n{{ $json.content.parts[0].text }}\n\n{{ $json.candidates[0].content.parts[0].text }}\n\nHoje é {{$now}}",
+        "options": {
+          "systemMessage": "Você é um agente responsável por gerenciar dados de usuários em um banco de dados Supabase. \nSeu papel é:\n- Sempre que alguém entrar em contato verificar se já existe o cadastro no banco de dados.\n       Caso não exista o cadastro, cadastre no banco de dados.\n       Caso já exista, não faça nada.\n- Consultar informações específicas.\n- Atualizar ou excluir registros, caso necessário.\n\nUse as ferramentas disponíveis para:\n- Criar registros com as informações fornecidas no nó Cadastro. \n- Consultar registros conforme o pedido do usuário.\n- Excluir registros com base em uma identificação (ex: número de telefone, nome, ou ID).\n\nSempre retorne uma resposta clara com base no resultado da ação realizada. \nSe a informação não estiver disponível no banco, informe ao usuário.\n\n\nREGRAS PARA CADASTRO:\n- Extraia nome do contexto da conversa\n- Use número do WhatsApp como contato\n- Gere ID único baseado no timestamp\n- Se já existir, apenas confirme cadastro\n- SEMPRE retorne status da operação claramente"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 2.2,
+      "position": [
+        544,
+        944
+      ],
+      "id": "dfa46526-b8df-4eab-8edf-0293a4beb46f",
+      "name": "agente banco de dados"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.body.data.message.conversation }}\n\n{{ $json.content.parts[0].text }}\n\n{{ $json.candidates[0].content.parts[0].text }}\n\nhoje é {{ $now }}",
+        "options": {
+          "systemMessage": "Seu papel é gerenciar compromissos da agenda do professor Kemerson. \nUse os nós: Criar agenda, Atualizar Evento, Consultar agenda e Cancelar agenda, conforme solicitado pelo usuário.\n\nSempre que o aluno quiser marcar uma aula, interprete que data ele quer e marque\n\nSempre retorne o ID do evento ao aluno.\nVocê só irá fazer qualquer alteração em algum evento após o contato informar o ID do evento agendado. \n\nFORMATAÇÃO DE DATAS:\n- Interprete linguagem natural (\"amanhã\", \"próxima terça\")\n- Use fuso horário brasileiro (América/São_Paulo)\n- Duração padrão: 1 hora\n- SEMPRE retorne ID do evento criado\n- Para alterações, exija ID do evento\n\nSempre envie a mensagem de aula marcada como neste exemplo: \n✅ **AGENDA CONFIRMADA**\n📅 Data: {data}\n🕐 Horário: {hora}\n📍 Local: Estúdio do Prof. Kemerson\n🔗 ID do evento: {id}\n\nPara reagendar, envie: \"reagendar {id} para {nova_data}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 2.2,
+      "position": [
+        1152,
+        1008
+      ],
+      "id": "2a1b9c13-84ae-4d1a-a153-8162bcdf4a4d",
+      "name": "agente agenda"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.body.data.message.conversation }}\n\n{{ $json.content.parts[0].text }}\n\n{{ $json.candidates[0].content.parts[0].text }}",
+        "options": {
+          "systemMessage": "Seu papel é ser a base de conhecimento do professor Kemerson sobre as aulas de violão e música, sempre consulto o nó google docs para responder as perguntas. \n\nQuando não souber algo, apenas informe que não sabe a informação e nada mais."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 2.2,
+      "position": [
+        1248,
+        640
+      ],
+      "id": "2d9145c4-1b05-4714-bc66-1740fa4fbc39",
+      "name": "agente conhecimento"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.data.message.conversation }}\n\n{{ $json.content.parts[0].text }}\n\n{{ $json.candidates[0].content.parts[0].text }}\n\n\n",
+        "options": {
+          "systemMessage": "Você é um agente orquestrador, se apresente como Capostraste, assitente virtual do professor Kemerson. não diga mais nada do que você faz ao aluno além disso. \n\nFLUXO OBRIGATÓRIO:\n1. SEMPRE consulte o agente banco de dados primeiro\n2. Identifique outros assuntos na mensagem\n3. Chame ferramentas apropriadas simultaneamente\n4. Aguarde TODAS as respostas\n5. Compile resposta final organizada\n\nNUNCA responda por conta própria - apenas organize as respostas das ferramentas.\n\nSeu papel é ler a mensagem do usuário e identificar **todos os assuntos mencionados**, podendo haver **mais de um assunto por mensagem**.\n\nCada assunto identificado deve ser tratado com a ferramenta apropriada. Você pode chamar **mais de uma ferramenta por vez**, se necessário.\n\n🔧 Ferramentas disponíveis:\n- `agente de conhecimento`: para responder dúvidas sobre as aulas, planos, metodologia e funcionamento.\n- `agente agenda`: para criar, reagendar, consultar ou cancelar compromissos no Google Calendar.\n- `agente banco de dados`: para cadastrar, consultar ou excluir alunos do banco Supabase.\n\n🎯 Regras:\n- **Não responda nada por conta própria.**\n- **Não resuma nem comente as respostas das ferramentas.**\n- Apenas chame as ferramentas necessárias, **aguarde as respostas** de todas, e **depois retorne uma resposta final com todas as respostas em ordem lógica.\n\nObs: A única ferramenta que sempre será consultada é a agente banco de dados, para verificar se o usuário é um aluno cadastrado."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        560,
+        320
+      ],
+      "id": "d0b7c25d-fb6f-4d30-8f38-882c1a6cec1a",
+      "name": "Orquestrador"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2de8c818-04a6-4812-a17f-3b43f7e251c2",
+              "leftValue": "={{ $json.body.data.key.fromMe }}\n\n",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -496,
+        320
+      ],
+      "id": "9447b814-a59c-40da-8f41-3fcf24d62e58",
+      "name": "Sou eu ?"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Orquestrador",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Docs": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente conhecimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar agenda": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente agenda",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualizar Evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente agenda",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar agenda": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente agenda",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar agenda": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente agenda",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Orquestrador",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "Orquestrador",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastro": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente banco de dados",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente banco de dados",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deletar": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente banco de dados",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ouve Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Sou eu ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Enviar Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcrição de áudio": {
+      "main": [
+        [
+          {
+            "node": "Orquestrador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Interpretar Imagem": {
+      "main": [
+        [
+          {
+            "node": "Orquestrador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Converter Imagem": {
+      "main": [
+        [
+          {
+            "node": "Interpretar Imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Converte áudio": {
+      "main": [
+        [
+          {
+            "node": "Transcrição de áudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tipo de mensagem": {
+      "main": [
+        [
+          {
+            "node": "Orquestrador",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Converte áudio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Converter Imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "agente banco de dados",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "agente agenda",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "agente agenda",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "agente conhecimento",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "agente banco de dados",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "agente conhecimento",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "agente banco de dados": {
+      "ai_tool": [
+        [
+          {
+            "node": "Orquestrador",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "agente agenda": {
+      "ai_tool": [
+        [
+          {
+            "node": "Orquestrador",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "agente conhecimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "Orquestrador",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Orquestrador": {
+      "main": [
+        [
+          {
+            "node": "Ler Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sou eu ?": {
+      "main": [
+        [
+          {
+            "node": "Tipo de mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f27da4fd-f681-4a6d-ac2c-c8d1158afa24",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5130f5d8e47afc36fd5b2c693179dba9d84d1767465b93ceab97979e41f3b6b5"
+  },
+  "id": "jU8zlqlihXsx4N5U",
+  "tags": []
+}
