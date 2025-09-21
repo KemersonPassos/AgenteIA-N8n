@@ -8,8 +8,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        400,
-        512
+        640,
+        -304
       ],
       "id": "1114755c-7743-4c7f-91de-35b95ed81137",
       "name": "Google Gemini Chat Model",
@@ -22,148 +22,15 @@
     },
     {
       "parameters": {
-        "operation": "get",
-        "documentURL": "https://docs.google.com/document/d/1EIqVSGm1qRjsBwyR2wZNrw17Q86bsxa_fJXSjATkU8M/edit?usp=sharing"
-      },
-      "type": "n8n-nodes-base.googleDocsTool",
-      "typeVersion": 2,
-      "position": [
-        1408,
-        848
-      ],
-      "id": "f6623c3e-8534-4869-b683-e16a25e6f5fc",
-      "name": "Google Docs",
-      "credentials": {
-        "googleDocsOAuth2Api": {
-          "id": "lBsQ15VkEJo9NtRw",
-          "name": "Google Docs account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "calendar": {
-          "__rl": true,
-          "value": "kemersoncardozo@gmail.com",
-          "mode": "list",
-          "cachedResultName": "kemersoncardozo@gmail.com"
-        },
-        "start": "={{ $fromAI('Start', ``, 'string') }}",
-        "end": "={{ $fromAI('End', ``, 'string') }}",
-        "useDefaultReminders": "={{ $fromAI('Use_Default_Reminders', ``, 'boolean') }}",
-        "additionalFields": {
-          "summary": "={{ $fromAI('Summary', '', 'string') }}"
-        }
-      },
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.3,
-      "position": [
-        1136,
-        1216
-      ],
-      "id": "1d52993d-ad25-4706-8bf0-5188904d4c75",
-      "name": "Criar agenda",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "Sy3R9g0uhgtcbAsE",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "calendar": {
-          "__rl": true,
-          "value": "kemersoncardozo@gmail.com",
-          "mode": "list",
-          "cachedResultName": "kemersoncardozo@gmail.com"
-        },
-        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
-        "updateFields": {}
-      },
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.3,
-      "position": [
-        1264,
-        1216
-      ],
-      "id": "d6aaaf84-1dd5-464e-8287-f2d47bbbdc98",
-      "name": "Atualizar Evento",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "Sy3R9g0uhgtcbAsE",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "calendar": {
-          "__rl": true,
-          "value": "kemersoncardozo@gmail.com",
-          "mode": "list",
-          "cachedResultName": "kemersoncardozo@gmail.com"
-        },
-        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
-        "timeMin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('After', ``, 'string') }}",
-        "timeMax": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Before', ``, 'string') }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.3,
-      "position": [
-        1392,
-        1216
-      ],
-      "id": "4fc48de8-aba0-46fb-8205-5e63d9506824",
-      "name": "Consultar agenda",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "Sy3R9g0uhgtcbAsE",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "calendar": {
-          "__rl": true,
-          "value": "kemersoncardozo@gmail.com",
-          "mode": "list",
-          "cachedResultName": "kemersoncardozo@gmail.com"
-        },
-        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.3,
-      "position": [
-        1520,
-        1216
-      ],
-      "id": "a2b8911a-12d1-4cb9-bfe2-537c983f3f55",
-      "name": "Cancelar agenda",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "Sy3R9g0uhgtcbAsE",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Ouve Mensagem').item.json.body.data.key.remoteJid }}",
-        "contextWindowLength": 25
+        "sessionKey": "={{ $('Ouve Mensagem').item.json.body.data.key.id }}",
+        "contextWindowLength": 50
       },
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        528,
-        544
+        768,
+        -304
       ],
       "id": "1eeacff8-c9dc-4e86-a804-2a198efd4341",
       "name": "Postgres Chat Memory",
@@ -179,8 +46,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1,
       "position": [
-        656,
-        544
+        896,
+        -304
       ],
       "id": "e7b844e9-af7c-4db2-805b-868b510028e7",
       "name": "Think"
@@ -208,8 +75,8 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        624,
-        1152
+        1008,
+        -96
       ],
       "id": "24530c88-06bc-4686-9557-a69b2e066732",
       "name": "Cadastro",
@@ -236,8 +103,8 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        768,
-        1152
+        1136,
+        -96
       ],
       "id": "f677eda8-3eaf-49c1-9a0f-73920858fc47",
       "name": "Consultar",
@@ -256,8 +123,8 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        896,
-        1088
+        1264,
+        -96
       ],
       "id": "3f74a98b-e45f-4548-a33f-d11e45813a71",
       "name": "Deletar",
@@ -277,8 +144,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -720,
-        320
+        -416,
+        -96
       ],
       "id": "41c24802-732b-47f4-9cca-ff616c0183d5",
       "name": "Ouve Mensagem",
@@ -295,8 +162,8 @@
       "type": "n8n-nodes-evolution-api.evolutionApi",
       "typeVersion": 1,
       "position": [
-        976,
-        144
+        1248,
+        -576
       ],
       "id": "f201f727-0989-4751-83e6-496cd69df686",
       "name": "Ler Mensagem",
@@ -320,8 +187,8 @@
       "type": "n8n-nodes-evolution-api.evolutionApi",
       "typeVersion": 1,
       "position": [
-        1136,
-        112
+        1392,
+        -576
       ],
       "id": "ddc21a24-c25a-47f6-896b-24c8f59de799",
       "name": "Enviar Mensagem",
@@ -347,8 +214,8 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        192,
-        160
+        464,
+        -256
       ],
       "id": "53bf78b0-f3cf-4bf6-bf4d-bde09e14a4b1",
       "name": "Transcrição de áudio",
@@ -377,8 +244,8 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        176,
-        464
+        464,
+        32
       ],
       "id": "82e0a82d-87b4-4a9b-a600-196c02873858",
       "name": "Interpretar Imagem",
@@ -398,8 +265,8 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        -48,
-        464
+        240,
+        32
       ],
       "id": "65f82e86-3d70-4ed1-9ced-e3fb53629c07",
       "name": "Converter Imagem"
@@ -413,8 +280,8 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        -32,
-        176
+        240,
+        -256
       ],
       "id": "f6fde7d8-80fa-46b3-a4d9-9caed8b66692",
       "name": "Converte áudio"
@@ -505,36 +372,23 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -272,
-        304
+        80,
+        -128
       ],
       "id": "092256f4-1dc0-4d0c-a8ad-5befc2ebc9b6",
       "name": "Tipo de mensagem"
     },
     {
       "parameters": {
-        "contextWindowLength": 10
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        496,
-        1136
-      ],
-      "id": "b8ee2e15-274e-4f66-8608-592f57e8a8b9",
-      "name": "Simple Memory"
-    },
-    {
-      "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "={{ $('Ouve Mensagem').item.json.body.data.key.remoteJid }}",
-        "contextWindowLength": 10
+        "contextWindowLength": 20
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        1024,
-        1264
+        1648,
+        -96
       ],
       "id": "524642d1-6b86-45a5-ae42-be0899921ba3",
       "name": "Simple Memory1"
@@ -546,8 +400,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        864,
-        768
+        752,
+        -96
       ],
       "id": "8f5851e7-96d0-45fb-a1ae-6190f2b49173",
       "name": "Google Gemini Chat Model2",
@@ -560,36 +414,16 @@
     },
     {
       "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Ouve Mensagem').item.json.body.data.key.id }}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
-      "typeVersion": 1.3,
-      "position": [
-        1296,
-        832
-      ],
-      "id": "522988e4-32dd-4d80-b8ba-b04f0234be6a",
-      "name": "Postgres Chat Memory1",
-      "credentials": {
-        "postgres": {
-          "id": "joeG3TczaitSGcBJ",
-          "name": "Postgres account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "text": "={{ $json.body.data.message.conversation }}\n\n{{ $json.content.parts[0].text }}\n\n{{ $json.candidates[0].content.parts[0].text }}\n\nHoje é {{$now}}",
         "options": {
-          "systemMessage": "Você é um agente responsável por gerenciar dados de usuários em um banco de dados Supabase. \nSeu papel é:\n- Sempre que alguém entrar em contato verificar se já existe o cadastro no banco de dados.\n       Caso não exista o cadastro, cadastre no banco de dados.\n       Caso já exista, não faça nada.\n- Consultar informações específicas.\n- Atualizar ou excluir registros, caso necessário.\n\nUse as ferramentas disponíveis para:\n- Criar registros com as informações fornecidas no nó Cadastro. \n- Consultar registros conforme o pedido do usuário.\n- Excluir registros com base em uma identificação (ex: número de telefone, nome, ou ID).\n\nSempre retorne uma resposta clara com base no resultado da ação realizada. \nSe a informação não estiver disponível no banco, informe ao usuário.\n\n\nREGRAS PARA CADASTRO:\n- Extraia nome do contexto da conversa\n- Use número do WhatsApp como contato\n- Gere ID único baseado no timestamp\n- Se já existir, apenas confirme cadastro\n- SEMPRE retorne status da operação claramente"
+          "systemMessage": "# Informações  \nVocê é um **sub-agente especializado em banco de dados**.  \nSeu nome ou identidade não devem ser revelados ao aluno.  \nVocê atua **apenas quando acionado pelo agente orquestrador (Capostraste)**, retornando respostas neutras e estruturadas (sem reescrever tom).\n\n---\n\n# Papel e Contexto  \nSeu papel é **gerenciar dados de usuários no banco Supabase**.  \nVocê deve criar, consultar, atualizar e excluir registros sempre que solicitado pelo orquestrador.  \nVocê nunca interage diretamente com o aluno, apenas retorna resultados ao orquestrador.  \n\n---\n\n# Diretrizes Gerais  \n1. Sempre verificar se o usuário já está cadastrado ao entrar em contato.  \n2. Usar as ferramentas disponíveis para manipulação do banco:  \n   - Criar registros (nó **Cadastro**).  \n   - Consultar registros (com base nos dados fornecidos).  \n   - Excluir registros (usando identificadores como número de telefone, nome ou ID).  \n   - Atualizar registros, caso necessário.  \n3. Sempre retornar uma resposta clara e objetiva com base no resultado da operação.  \n4. Se a informação não estiver disponível no banco, informe isso claramente.  \n5. Nunca invente dados ou retorne informações sem consulta real ao banco.  \n\n---\n\n# Tarefas  \n- Criar novos registros no Supabase.  \n- Consultar registros existentes.  \n- Atualizar informações de registros.  \n- Excluir registros com base em identificadores válidos.  \n- Retornar o status da operação (sucesso ou erro) ao orquestrador.  \n\n---\n\n# Especificações  \n🔧 Operações permitidas:  \n- `Criar registros` → cadastrar usuários com informações fornecidas.  \n- `Consultar registros` → buscar dados conforme solicitação.  \n- `Atualizar registros` → modificar informações existentes.  \n- `Excluir registros` → remover registros com base em identificadores fornecidos.  \n\n---\n\n# Restrições  \n- Nunca agir sem instrução do agente orquestrador.  \n- Nunca interagir diretamente com o aluno.  \n- Nunca inventar informações ou registros inexistentes.  \n- Não executar exclusão ou atualização sem identificador válido.  \n\n---\n\n# Tratamento de Erros  \n- Se a informação não existir no banco, retornar mensagem clara informando ausência.  \n- Se não houver identificador válido para exclusão/atualização, retornar erro pedindo identificação correta.  \n- Se ocorrer falha no banco, retornar mensagem de erro informando que a operação não pôde ser concluída.  "
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        544,
-        944
+        1024,
+        -304
       ],
       "id": "dfa46526-b8df-4eab-8edf-0293a4beb46f",
       "name": "agente banco de dados"
@@ -598,14 +432,14 @@
       "parameters": {
         "text": "={{ $json.body.data.message.conversation }}\n\n{{ $json.content.parts[0].text }}\n\n{{ $json.candidates[0].content.parts[0].text }}\n\nhoje é {{ $now }}",
         "options": {
-          "systemMessage": "Seu papel é gerenciar compromissos da agenda do professor Kemerson. \nUse os nós: Criar agenda, Atualizar Evento, Consultar agenda e Cancelar agenda, conforme solicitado pelo usuário.\n\nSempre que o aluno quiser marcar uma aula, interprete que data ele quer e marque\n\nSempre retorne o ID do evento ao aluno.\nVocê só irá fazer qualquer alteração em algum evento após o contato informar o ID do evento agendado. \n\nFORMATAÇÃO DE DATAS:\n- Interprete linguagem natural (\"amanhã\", \"próxima terça\")\n- Use fuso horário brasileiro (América/São_Paulo)\n- Duração padrão: 1 hora\n- SEMPRE retorne ID do evento criado\n- Para alterações, exija ID do evento\n\nSempre envie a mensagem de aula marcada como neste exemplo: \n✅ **AGENDA CONFIRMADA**\n📅 Data: {data}\n🕐 Horário: {hora}\n📍 Local: Estúdio do Prof. Kemerson\n🔗 ID do evento: {id}\n\nPara reagendar, envie: \"reagendar {id} para {nova_data}"
+          "systemMessage": "=# Informações\nVocê é um **sub-agente especializado em agenda** do professor Kemerson.  \nSeu nome ou identidade não devem ser revelados ao aluno.  \nVocê atua **apenas quando acionado pelo agente orquestrador (Capostraste)**, retornando respostas neutras e estruturadas (sem reescrever tom).  \n\n---\n\n# Papel e Contexto\nSeu papel é **gerenciar compromissos da agenda do professor Kemerson**.  \nTodas as interações com a agenda devem ser feitas exclusivamente via o **nó MCP Client**.  \nVocê nunca interage diretamente com o aluno, apenas executa operações no calendário e retorna os resultados ao orquestrador.  \n\n---\n\n# Diretrizes Gerais\n1. Sempre use o nó **MCP Client** para manipular a agenda.  \n2. Escolha a ferramenta apropriada do MCP:  \n   - `Criar agenda` → cria novo evento.  \n   - `Atualizar evento` → altera evento existente.  \n   - `Consultar agenda` → lista ou busca eventos.  \n   - `Cancelar agenda` → remove evento existente.  \n3. Sempre interpretar corretamente a data e horário mencionados pelo aluno.  \n4. **Verificar conflitos de horário** antes de criar um novo evento.  \n5. Retornar sempre o **ID do evento** ao final de cada operação.  \n6. Nunca inventar datas, IDs ou descrições.  \n7. Sempre incluir no evento: **nome do aluno, telefone e motivo da aula** no campo de descrição/título.  \n\n---\n\n# Tarefas\n- Criar eventos na agenda com base nas solicitações.  \n- Atualizar eventos existentes quando o ID for informado.  \n- Cancelar eventos existentes quando solicitado e com ID informado.  \n- Consultar agenda quando houver pedido explícito.  \n- Retornar o resultado de todas as operações, incluindo o ID do evento.  \n\n---\n\n# Especificações\n🔧 Ferramentas dentro do **MCP Client**:  \n- `Criar agenda`  \n- `Atualizar evento`  \n- `Consultar agenda`  \n- `Cancelar agenda`  \n\n---\n\n# Restrições\n- Nunca agir sem instrução do agente orquestrador. \n- Nunca modificar eventos sem ID válido.  \n- Nunca interagir diretamente com o aluno.  \n- Não inventar informações (datas, IDs ou descrições).  \n\n---\n\n# Tratamento de Erros\n- Se o usuário não fornecer um ID para alteração ou cancelamento, retorne erro pedindo o ID.  \n- Se a data/hora solicitada for inválida ou ambígua, retorne mensagem pedindo correção.  \n- Se houver conflito de horário ao criar novo evento, retorne erro informando sobre o conflito.  \n- Se houver falha no nó MCP, retorne mensagem de erro informando que a operação não pôde ser concluída.  \n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        1152,
-        1008
+        1696,
+        -304
       ],
       "id": "2a1b9c13-84ae-4d1a-a153-8162bcdf4a4d",
       "name": "agente agenda"
@@ -614,14 +448,14 @@
       "parameters": {
         "text": "={{ $json.body.data.message.conversation }}\n\n{{ $json.content.parts[0].text }}\n\n{{ $json.candidates[0].content.parts[0].text }}",
         "options": {
-          "systemMessage": "Seu papel é ser a base de conhecimento do professor Kemerson sobre as aulas de violão e música, sempre consulto o nó google docs para responder as perguntas. \n\nQuando não souber algo, apenas informe que não sabe a informação e nada mais."
+          "systemMessage": "# Informações\nVocê é um **sub-agente especializado em conhecimento**.  \nSeu nome ou identidade não devem ser revelados ao aluno.  \nVocê atua **apenas quando acionado pelo agente orquestrador (Capostraste)**, retornando respostas neutras e estruturadas (sem reescrever tom).\n\n---\n\n# Papel e Contexto\nSeu papel é **responder dúvidas sobre aulas, planos, metodologia e funcionamento**.  \nVocê pode usar:\n- **Memória de chat** → para lembrar interações anteriores.  \n- **Vector Store (RAG)** → para consultar informações reais contidas nos documentos.  \n\nVocê nunca responde por conta própria e não interage diretamente com o aluno, apenas executa e retorna resultados ao orquestrador.  \n\n---\n\n# Diretrizes Gerais\n1. Sempre responder apenas dentro do escopo: aulas, planos, metodologia e funcionamento.  \n2. Ordem de consulta:  \n   - Primeiro, verifique a **memória de chat**.  \n   - Se a dúvida for sobre **planos de aula**, consulte **obrigatoriamente o vector store (RAG)**, mesmo que a memória tenha informações.  \n   - Para os outros temas (aulas, metodologia, funcionamento), se a memória não tiver resposta, consulte o vector store.  \n   - Se ainda assim não houver informação, retorne mensagem clara informando que não está disponível.  \n3. Forneça respostas **claras, completas e organizadas**.  \n4. Nunca invente dados que não estejam na memória ou no vector store.  \n\n---\n\n# Tarefas\n- Responder dúvidas relacionadas a aulas do professor Kemerson.  \n- Esclarecer questões sobre planos de estudo e planos de aula (sempre via RAG).  \n- Explicar a metodologia de ensino, recursos e filosofia.  \n- Informar sobre funcionamento: como acessar, agendar ou participar das aulas.  \n- Retornar a resposta final ao orquestrador.  \n\n---\n\n# Especificações\n🔧 Escopo permitido:  \n- `Aulas`: funcionamento, estrutura, dinâmica.  \n- `Planos`: cronogramas, conteúdos planejados, metas de aprendizado.  \n- `Metodologia`: forma de ensino, recursos utilizados, filosofia de ensino.  \n- `Funcionamento`: como acessar, agendar ou participar das aulas.  \n\n---\n\n# Restrições\n- Nunca agir sem instrução do agente orquestrador.  \n- Nunca interagir diretamente com o aluno.  \n- Nunca inventar informações.  \n- Nunca responder fora do escopo definido.  \n\n---\n\n# Tratamento de Erros\n- Se a dúvida for fora do escopo, retorne erro informando que não é possível responder.  \n- Se não encontrar resposta nem na memória nem no vector store, retorne mensagem dizendo que a informação não está disponível.  \n- Se houver ambiguidade, solicite mais detalhes ao orquestrador.  \n- Se ocorrer falha, retorne erro informando que a resposta não pôde ser gerada.  \n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        1248,
-        640
+        2176,
+        -304
       ],
       "id": "2d9145c4-1b05-4714-bc66-1740fa4fbc39",
       "name": "agente conhecimento"
@@ -631,14 +465,14 @@
         "promptType": "define",
         "text": "={{ $json.body.data.message.conversation }}\n\n{{ $json.content.parts[0].text }}\n\n{{ $json.candidates[0].content.parts[0].text }}\n\n\n",
         "options": {
-          "systemMessage": "Você é um agente orquestrador, se apresente como Capostraste, assitente virtual do professor Kemerson. não diga mais nada do que você faz ao aluno além disso. \n\nFLUXO OBRIGATÓRIO:\n1. SEMPRE consulte o agente banco de dados primeiro\n2. Identifique outros assuntos na mensagem\n3. Chame ferramentas apropriadas simultaneamente\n4. Aguarde TODAS as respostas\n5. Compile resposta final organizada\n\nNUNCA responda por conta própria - apenas organize as respostas das ferramentas.\n\nSeu papel é ler a mensagem do usuário e identificar **todos os assuntos mencionados**, podendo haver **mais de um assunto por mensagem**.\n\nCada assunto identificado deve ser tratado com a ferramenta apropriada. Você pode chamar **mais de uma ferramenta por vez**, se necessário.\n\n🔧 Ferramentas disponíveis:\n- `agente de conhecimento`: para responder dúvidas sobre as aulas, planos, metodologia e funcionamento.\n- `agente agenda`: para criar, reagendar, consultar ou cancelar compromissos no Google Calendar.\n- `agente banco de dados`: para cadastrar, consultar ou excluir alunos do banco Supabase.\n\n🎯 Regras:\n- **Não responda nada por conta própria.**\n- **Não resuma nem comente as respostas das ferramentas.**\n- Apenas chame as ferramentas necessárias, **aguarde as respostas** de todas, e **depois retorne uma resposta final com todas as respostas em ordem lógica.\n\nObs: A única ferramenta que sempre será consultada é a agente banco de dados, para verificar se o usuário é um aluno cadastrado."
+          "systemMessage": "=# Informações\n- **sentimento_atual_da_conversa**: neutro\n- **nome_do_agente**: Capostraste\n- **nome_da_empresa**: Professor Kemerson\n- **horário_de_funcionamento**: Segunda a Sexta, das 8h às 18h\n- **data_atual**: {{ $now.format(\"dd/MM/yyyy\") }}\n- **hora_atual**: {{ $now.format(\"HH:mm\") }}\n\n---\n\n# Papel e Contexto\nVocê é **nome_do_agente**, assistente virtual do **nome_da_empresa**.\nSua função principal é **orquestrar respostas** de forma precisa e eficiente. Você **não responde por conta própria** em hipótese alguma.\n\nSua função é:\n1.  Ler a mensagem do usuário.\n2.  Acionar a ferramenta `agente banco de dados` para verificar a identidade do aluno, silenciosamente.\n3.  Com base no resultado, identificar **todos os outros assuntos mencionados** na mensagem.\n4.  Acionar as ferramentas corretas para os demais assuntos.\n5.  Aguardar as respostas de todas as ferramentas.\n6.  Montar uma resposta final organizada e humanizada com base nelas.\n\n---\n\n# Diretrizes Gerais\n- **Passo 1: Verificação de Aluno (Ação Obrigatória e Silenciosa)**\n    - **Sempre** consulte a ferramenta `agente banco de dados` **primeiro e em silêncio**.\n    - **Se o aluno for encontrado** no banco de dados, inicie a conversa se apresentando e cumprimentando o aluno pelo nome (Ex: \"Olá, [Nome do Aluno]! Eu sou Capostraste, assistente virtual do Professor Kemerson. Como posso ajudar?\").\n    - **Se o aluno não for encontrado**, prossiga normalmente com o fluxo da conversa, se apresentando de forma padrão (Ex: \"Olá! Eu sou Capostraste, assistente virtual do Professor Kemerson. Como posso ajudar?\"), **sem mencionar que uma verificação foi feita**.\n    - Se apresente apenas no início da conversa, sem ficar repetindo quem você é.\n\n- **Passo 2: Identificação e Ação**\n    - Após a verificação inicial, identifique os outros assuntos na mensagem.\n    - Chame as ferramentas apropriadas **simultaneamente**, se houver mais de um assunto.\n    - Aguarde todas as respostas das ferramentas antes de continuar.\n\n- **Passo 3: Resposta Final**\n    - Compile e devolva uma resposta final organizada e humanizada. Mantenha um tom profissional, empático e amigável, adaptando-se ao **sentimento_atual_da_conversa** (Ex: mais formal para sentimentos negativos, e mais caloroso para positivos).\n    - Nunca inventar, resumir ou responder diretamente sem usar as ferramentas.\n\n---\n\n# Tarefas\n- Identificar assuntos.\n- Chamar as ferramentas corretas na ordem correta.\n- Garantir que o fluxo seja seguido em todas as mensagens.\n- Retornar a resposta final com as informações vindas das ferramentas.\n\n---\n\n# Especificações\n🔧 **Ferramentas disponíveis:**\n- `agente banco de dados`: Consulta a base de dados de alunos. (**Sempre consultado primeiro**).\n- `agente de conhecimento`: Responde dúvidas sobre aulas, planos, metodologia e funcionamento.\n- `agente agenda`: Cria, reagenda, consulta ou cancela compromissos no Google Calendar.\n\n---\n\n# Restrições\n- Nunca responder por conta própria.\n- Nunca resumir, interpretar ou adicionar comentários pessoais.\n- Não revelar o funcionamento interno do fluxo ou das ferramentas ao aluno.\n- Não quebrar o fluxo obrigatório (Banco de Dados -> Outras Ferramentas -> Resposta).\n\n---\n\n# Tratamento de Erros\n- Se uma ferramenta não responder ou der erro, informe isso claramente na resposta final.\n- Se o usuário pedir algo fora do escopo das ferramentas, informe que não pode realizar a solicitação."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
       "position": [
-        560,
-        320
+        896,
+        -528
       ],
       "id": "d0b7c25d-fb6f-4d30-8f38-882c1a6cec1a",
       "name": "Orquestrador"
@@ -672,11 +506,480 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -496,
-        320
+        -112,
+        -96
       ],
       "id": "9447b814-a59c-40da-8f41-3fcf24d62e58",
       "name": "Sou eu ?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "066a0130-1607-405a-b3ae-16938008ee18",
+              "leftValue": "={{ $json.body.data.key.fromMe }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -272,
+        -96
+      ],
+      "id": "ec3c8e47-77d5-418e-b9a6-fe6799a8d767",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Ouve Mensagem').item.json.body.data.key.id }}",
+        "contextWindowLength": 50
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        2160,
+        -96
+      ],
+      "id": "288f4eb7-e6c2-4373-9734-7b43bdd411e4",
+      "name": "Postgres Chat Memory1",
+      "credentials": {
+        "postgres": {
+          "id": "joeG3TczaitSGcBJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "Contém todos os dados de usuário que você pode checar de acordo com o contexto e respostas do própio"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [
+        2288,
+        -96
+      ],
+      "id": "217eea45-a67d-49e3-bfaf-9d94b73cdcb3",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {
+          "queryName": "match_documents"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        2144,
+        96
+      ],
+      "id": "828843dd-c9dd-4f65-ace2-d491266d7055",
+      "name": "Supabase Vector Store1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "PtzUX3qjMpzQRArM",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2416,
+        112
+      ],
+      "id": "ae72f7ac-11eb-4b2f-8d3f-96f99c7a5b3f",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "upsxATZGeRjc7U9u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2256,
+        256
+      ],
+      "id": "50d46296-04fd-4cbf-afd1-2fa64d5882f5",
+      "name": "Embeddings Google Gemini1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "upsxATZGeRjc7U9u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        1776,
+        -96
+      ],
+      "id": "fece430f-1c37-4214-af18-92e35ed7ef41",
+      "name": "Think1"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        1392,
+        -96
+      ],
+      "id": "6a005430-5d20-4521-9533-8cb6f606c1e8",
+      "name": "Think2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        -96
+      ],
+      "id": "04179e9d-3bd8-47bd-89a9-c3c30cea30a1",
+      "name": "Google Gemini Chat Model3",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "upsxATZGeRjc7U9u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "endpointUrl": "https://n8n-n8n.6uxx9k.easypanel.host/mcp-test/server_calendar"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1.1,
+      "position": [
+        1904,
+        -96
+      ],
+      "id": "e6e0d30e-3d84-4828-a3ce-23fa8fa3aa28",
+      "name": "MCP Client"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2032,
+        -96
+      ],
+      "id": "1ed0016f-a6a6-4101-a4d1-d0a9fe923249",
+      "name": "Google Gemini Chat Model4",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "upsxATZGeRjc7U9u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Ouve Mensagem').item.json.body.data.key.id }}",
+        "contextWindowLength": 50
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        880,
+        -96
+      ],
+      "id": "0d07a086-8a7f-4b13-bd8c-b130547cdccf",
+      "name": "Postgres Chat Memory2",
+      "credentials": {
+        "postgres": {
+          "id": "joeG3TczaitSGcBJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36ba1b49-6f5a-4bbf-b094-779466dbd68b",
+              "name": "file_id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        160
+      ],
+      "id": "91f7d299-d574-4b1b-9552-ad7fb18a4dfc",
+      "name": "Set_File_Id"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "=1EIqVSGm1qRjsBwyR2wZNrw17Q86bsxa_fJXSjATkU8M",
+          "mode": "id"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "text/plain"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1472,
+        160
+      ],
+      "id": "bf942a8e-7261-42d2-8f9f-80a8c5759c16",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "5Nm32VsrOQTa2yiE",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1616,
+        160
+      ],
+      "id": "4854d9e1-68a2-4fbe-b835-2d191001423b",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $('Extract from File').item.json.data }}",
+        "textSplittingMode": "custom",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "file_id",
+                "value": "={{ $('Set_File_Id').item.json.file_id }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1840,
+        304
+      ],
+      "id": "d6cf5b39-64f9-42cf-8b5c-885d81899aaa",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkSize": 300,
+        "chunkOverlap": 30,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        448
+      ],
+      "id": "a7e63da9-17db-4a9e-8516-c952ef07a988",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1728,
+        352
+      ],
+      "id": "051319b0-2c0d-497c-84c4-7bcb82601d74",
+      "name": "Embeddings Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "upsxATZGeRjc7U9u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        1760,
+        160
+      ],
+      "id": "f155f35f-695b-498c-94b1-186ee1ebc21f",
+      "name": "Supabase Vector Store",
+      "credentials": {
+        "supabaseApi": {
+          "id": "PtzUX3qjMpzQRArM",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "documents",
+        "filterType": "string",
+        "filterString": "=metadata->>file_id=like.*{{ $json.file_id }}*"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        160
+      ],
+      "id": "0c8db1c3-9fb3-4e63-a418-fceb3427350e",
+      "name": "Delete a row",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "PtzUX3qjMpzQRArM",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1eM2sO3yJyMIwmSi1NT_korjsRY2qqsD-",
+          "mode": "list",
+          "cachedResultName": "n8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1eM2sO3yJyMIwmSi1NT_korjsRY2qqsD-"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        96
+      ],
+      "id": "413d2da5-de84-404a-8c7e-a536694435c5",
+      "name": "Files Criated",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "5Nm32VsrOQTa2yiE",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1eM2sO3yJyMIwmSi1NT_korjsRY2qqsD-",
+          "mode": "list",
+          "cachedResultName": "n8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1eM2sO3yJyMIwmSi1NT_korjsRY2qqsD-"
+        },
+        "event": "fileUpdated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        256
+      ],
+      "id": "672c190a-eba3-41ac-ae79-d885304152cc",
+      "name": "Files Updated",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "5Nm32VsrOQTa2yiE",
+          "name": "Google Drive account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -687,61 +990,6 @@
           {
             "node": "Orquestrador",
             "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Docs": {
-      "ai_tool": [
-        [
-          {
-            "node": "agente conhecimento",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Criar agenda": {
-      "ai_tool": [
-        [
-          {
-            "node": "agente agenda",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Atualizar Evento": {
-      "ai_tool": [
-        [
-          {
-            "node": "agente agenda",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Consultar agenda": {
-      "ai_tool": [
-        [
-          {
-            "node": "agente agenda",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Cancelar agenda": {
-      "ai_tool": [
-        [
-          {
-            "node": "agente agenda",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -806,7 +1054,7 @@
       "main": [
         [
           {
-            "node": "Sou eu ?",
+            "node": "Filter",
             "type": "main",
             "index": 0
           }
@@ -893,17 +1141,6 @@
         ]
       ]
     },
-    "Simple Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "agente banco de dados",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Simple Memory1": {
       "ai_memory": [
         [
@@ -919,29 +1156,8 @@
       "ai_languageModel": [
         [
           {
-            "node": "agente agenda",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "agente conhecimento",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
             "node": "agente banco de dados",
             "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Postgres Chat Memory1": {
-      "ai_memory": [
-        [
-          {
-            "node": "agente conhecimento",
-            "type": "ai_memory",
             "index": 0
           }
         ]
@@ -1001,13 +1217,244 @@
           }
         ]
       ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Sou eu ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "agente conhecimento",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente conhecimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think1": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente agenda",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think2": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente banco de dados",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "agente agenda",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MCP Client": {
+      "ai_tool": [
+        [
+          {
+            "node": "agente agenda",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "agente conhecimento",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "agente banco de dados",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set_File_Id": {
+      "main": [
+        [
+          {
+            "node": "Delete a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete a row": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Files Criated": {
+      "main": [
+        [
+          {
+            "node": "Set_File_Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Files Updated": {
+      "main": [
+        [
+          {
+            "node": "Set_File_Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "f27da4fd-f681-4a6d-ac2c-c8d1158afa24",
+  "versionId": "3894f966-cc80-423a-a3bd-bb6081d2d9c7",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "5130f5d8e47afc36fd5b2c693179dba9d84d1767465b93ceab97979e41f3b6b5"
