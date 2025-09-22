@@ -1,0 +1,192 @@
+{
+  "name": "MCP Server",
+  "nodes": [
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "6fb26101337d9720c2c657447a0429378aa43245e9c2b376f31d01a021c38b3c@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Testes N8N"
+        },
+        "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+        "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+        "useDefaultReminders": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Use_Default_Reminders', ``, 'boolean') }}",
+        "additionalFields": {
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -304,
+        192
+      ],
+      "id": "2965a531-2d49-4a38-9487-cffe8b102ee8",
+      "name": "Criar agenda",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "Sy3R9g0uhgtcbAsE",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "6fb26101337d9720c2c657447a0429378aa43245e9c2b376f31d01a021c38b3c@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Testes N8N"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "updateFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -176,
+        192
+      ],
+      "id": "a341a1dd-15be-4ca2-b0c5-f564cd70a785",
+      "name": "Atualizar Evento",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "Sy3R9g0uhgtcbAsE",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "6fb26101337d9720c2c657447a0429378aa43245e9c2b376f31d01a021c38b3c@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Testes N8N"
+        },
+        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
+        "timeMin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('After', ``, 'string') }}",
+        "timeMax": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Before', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -48,
+        192
+      ],
+      "id": "3c8ba301-7ee1-415d-b07e-9375c55cea37",
+      "name": "Consultar agenda",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "Sy3R9g0uhgtcbAsE",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "6fb26101337d9720c2c657447a0429378aa43245e9c2b376f31d01a021c38b3c@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Testes N8N"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        96,
+        192
+      ],
+      "id": "97ed2f01-38a1-4a70-ae4d-438f778934fc",
+      "name": "Cancelar agenda",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "Sy3R9g0uhgtcbAsE",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "server_calendar"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        -176,
+        -80
+      ],
+      "id": "669be84f-bc32-4719-828a-4f42aa74a768",
+      "name": "MCP Server Trigger",
+      "webhookId": "94402510-4be0-4671-bf71-91f45cc60ed0",
+      "executeOnce": false,
+      "alwaysOutputData": false,
+      "retryOnFail": false
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Criar agenda": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualizar Evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar agenda": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar agenda": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "429597ff-886e-487a-bfee-9dc11265c082",
+  "meta": {
+    "instanceId": "5130f5d8e47afc36fd5b2c693179dba9d84d1767465b93ceab97979e41f3b6b5"
+  },
+  "id": "onCNXH2bp4KNRSFz",
+  "tags": []
+}
