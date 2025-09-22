@@ -5,6 +5,7 @@ Este projeto é um assistente virtual para o Professor Kemerson, chamado **Capos
 * **Gerenciar banco de dados**: Cadastrar, consultar e excluir informações de alunos do banco Supabase.
 * **Gerenciar agenda**: Criar, reagendar, consultar e cancelar compromissos no Google Calendar.
 * **Acessar base de conhecimento**: Responder dúvidas sobre as aulas, planos e metodologia usando um documento do Google Docs.
+* **Processar Múltiplos Tipos de Mídia**: Interagir com o usuário via texto, áudio e imagem.
 
 O assistente utiliza uma arquitetura de agentes para orquestrar as tarefas de forma eficiente.
 
@@ -28,9 +29,22 @@ O projeto é composto por vários agentes, cada um com um papel específico:
 
 O fluxo do assistente Capostraste é orquestrado para garantir uma resposta completa e precisa:
 
-1.  Uma mensagem é recebida e classificada por tipo (texto, áudio, imagem).
-2.  O **Agente Orquestrador** é acionado.
-3.  O Orquestrador **sempre** chama o **Agente Banco de Dados** para verificar o cadastro do usuário.
-4.  Simultaneamente, o Orquestrador identifica outros assuntos e chama os agentes correspondentes (Agenda ou Conhecimento).
-5.  O Orquestrador aguarda as respostas de **todas** as ferramentas.
-6.  Por fim, o Orquestrador compila as respostas e envia uma mensagem final para o usuário.
+1.  **Recepção e Filtragem de Mensagens**: Uma mensagem é recebida via WhatsApp e passa por um filtro para ignorar as mensagens enviadas pelo próprio bot.
+2.  **Classificação por Tipo de Mensagem**: O sistema identifica se a mensagem é texto, áudio ou imagem.
+    * **Áudio**: A mensagem de áudio é convertida e transcrita para texto.
+    * **Imagem**: A imagem é analisada e interpretada para extrair o contexto.
+    * **Texto**: A mensagem de texto segue diretamente para o próximo passo.
+3.  **Acionamento do Agente Orquestrador**: O texto (original ou transcrito) é enviado ao **Agente Orquestrador**.
+4.  **Verificação no Banco de Dados**: O Orquestrador **sempre** aciona o **Agente Banco de Dados** para verificar se o usuário já possui cadastro.
+5.  **Identificação e Delegação de Tarefas**: Simultaneamente, o Orquestrador identifica os demais assuntos na mensagem e aciona os agentes correspondentes:
+    * **Agente Agenda**: Para questões relacionadas a agendamentos.
+    * **Agente Conhecimento**: Para dúvidas sobre aulas, planos e metodologia.
+6.  **Compilação e Envio da Resposta**: O Orquestrador aguarda a resposta de **todas** as ferramentas acionadas, compila as informações em uma única mensagem coesa e a envia de volta ao usuário via WhatsApp.
+
+### **Atualização da Base de Conhecimento**
+
+O fluxo também inclui um processo automatizado para manter a base de conhecimento sempre atualizada:
+
+1.  **Monitoramento do Google Drive**: O sistema monitora uma pasta específica no Google Drive em busca de arquivos novos ou atualizados.
+2.  **Extração e Processamento de Dados**: Quando um arquivo é adicionado ou modificado, o conteúdo é extraído e processado.
+3.  **Vetorização e Armazenamento**: O texto extraído é enviado para a API da Gemini para ser vetorizado e, em seguida, é armazenado no Supabase. Isso garante que o **Agente Conhecimento** tenha acesso às informações mais recentes para responder às dúvidas dos alunos.
